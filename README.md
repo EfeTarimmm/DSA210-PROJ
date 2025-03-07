@@ -125,3 +125,11 @@ I will use the following tools for data analysis and visualization:
 ---
 
 This project is not just about tracking emotions; it is about leveraging data science to uncover meaningful insights into mental well-being. By understanding the patterns behind emotional fluctuations, I hope to make data-driven improvements in daily life and gain deeper insights into the factors shaping overall well-being.
+
+## AI Assistance Disclosure
+This project was developed with assistance from AI tools, specifically ChatGPT. The AI tool was used for:
+- Structuring and refining the README.md file.
+- Improving the clarity and organization of the project description.
+
+All AI-generated content was reviewed, edited, and adapted by me to align with the project requirements. Any further modifications and implementation were done independently.
+
