@@ -1,4 +1,4 @@
-# DepressionData-DSA210Project
+# UnderstandingDepression-DSA210Project
 
 ## Project Overview
 
