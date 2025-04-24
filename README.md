@@ -2,25 +2,25 @@
 
 ## Project Overview
 
-This project aims to explore the underlying socio-economic and behavioral factors that contribute to depression. By leveraging two diverse datasets, we seek to uncover patterns that highlight how various life circumstances impact mental health. Rather than making direct comparisons between populations, we use different perspectives to strengthen the confidence in our findings and provide a broader understanding of depression risk factors.
+This project aims to explore the underlying socio-economic and behavioral factors that contribute to depression. By leveraging two university-level student survey datasets, we investigate how academic performance, financial aid, sleep habits, and personal background correlate with depression severity.
 
-The approach is straightforward: analyze large-scale survey data, examine the relationships between economic conditions, social factors, and mental health, and derive meaningful insights to enhance our understanding of depression.
+Rather than comparing different populations, we adopt complementary datasets from distinct contexts to validate findings across samples and improve confidence in the conclusions. This approach allows us to build a more comprehensive and generalizable understanding of depression risk factors among students.
 
 ---
 
 ## Objectives
 
 1. **Identify Depression Risk Factors**  
-   Investigate the influence of income levels, education, employment status, and social interactions on depression prevalence.
+   Examine how academic achievement, sleep duration, financial support, and mental health history relate to depression outcomes.
 
 2. **Enhance Insights Through Multiple Perspectives**  
-   Utilize datasets from distinct socio-economic backgrounds to reinforce the reliability of findings.
+   Use two complementary student datasets to validate findings from different demographic and academic backgrounds.
 
-3. **Analyze the Role of Economic and Social Variables**  
-   Determine which financial and social conditions contribute most significantly to mental health variations.
+3. **Analyze the Role of Academic, Behavioral, and Social Variables**  
+   Determine which behavioral and contextual factors most significantly affect mental health, with emphasis on sleep and familial predisposition.
 
 4. **Provide Public Health Insights**  
-   Leverage findings to support discussions on mental health policies and potential intervention strategies.
+   Translate results into actionable insights for student well-being programs, especially around sleep habits and support systems.
 
 ---
 
@@ -29,55 +29,58 @@ The approach is straightforward: analyze large-scale survey data, examine the re
 This project blends two key areas of interest: mental health research and data science. Here’s why it matters:
 
 - **A Data-Driven Approach to Mental Health**  
-  Understanding depression should go beyond subjective assessments. By using real-world data, we can extract meaningful patterns.
+  Understanding depression through statistical testing strengthens the validity of our insights and avoids overreliance on subjective interpretation.
 
 - **Real-World Relevance**  
-  Identifying the socio-economic factors that influence depression may help inform strategies for addressing mental health disparities.
+  Student mental health is increasingly recognized as a public health concern. By identifying key risk factors, this project contributes to targeted intervention strategies.
 
-- **Bridging Different Perspectives**  
-  Examining depression through multiple datasets allows us to strengthen our conclusions and ensure they are not context-dependent.
+- **Bridging Complementary Datasets**  
+  By analyzing two datasets—one focused on detailed academic and demographic indicators, the other on broader behavioral and stress factors—we create a richer foundation for conclusions.
 
 ---
 
 ## Dataset
 
-This project relies on survey data capturing a range of demographic, economic, and mental health-related variables.
+This project uses two survey-based datasets that capture a range of academic, behavioral, and psychological metrics relevant to student well-being.
 
-### **1. NHANES 2017-2020 Mental Health & Demographics Data**
-- **Source:** National Health and Nutrition Examination Survey (NHANES)
-- **Description:** A U.S.-based dataset containing demographic, economic, and mental health screening information.
+### **1. uni_depression.csv**
+- **Description:** A dataset collected from university students, combining PHQ‑9 depression scores with academic metrics and financial aid indicators.
 - **Key Features:**
-  - Age, gender, education level, income-to-poverty ratio
-  - Depression screening scores (PHQ-9): A nine-item questionnaire assessing depression severity based on self-reported symptoms.
-  - Health and lifestyle habits
-  - Access to healthcare and social services
-- **Scope:** U.S. population, collected through structured interviews and medical assessments.
+  - Binned CGPA ranges (e.g., “2.5–3.0”)
+  - Scholarship/waiver status
+  - PHQ-9 total depression scores
 
-### **2. Busara Depression Data (Kenya, 2015)**
-- **Source:** Busara Center for Behavioral Economics
-- **Description:** A dataset focused on economic and social behaviors related to depression in rural Kenya.
+### **2. second_Student_Depression_Dataset.csv**
+- **Description:** A broader dataset covering numeric CGPA values, categorized sleep duration, and stress-related variables among students.
 - **Key Features:**
-  - Household size, income levels, education, and employment status
-  - Depression screening results
-  - Financial and economic activities
-  - Social and community engagement
-- **Scope:** Rural Kenyan population, collected via field studies and behavioral surveys.
+  - Depression score (PHQ‑9-style)
+  - Sleep duration categories
+  - Numeric CGPA values
+  - Indicators of financial and academic pressure
 
 ---
 
 ## Hypotheses
 
-1. **Income and Depression**  
-   - **H₀:** There is no significant relationship between income level and depression risk.  
-   - **Hₐ:** Lower income levels are associated with a higher likelihood of depression.
+1. **Sleep Duration and Depression**  
+   - **H₀:** Sleep duration has no association with depression scores.  
+   - **Hₐ:** Shorter sleep durations are associated with higher depression scores.  
+   *(Tested via Spearman correlation and one-way ANOVA)*
 
-2. **Education Level and Mental Health**  
-   - **H₀:** Education level does not influence depression prevalence.  
-   - **Hₐ:** Higher education levels are correlated with an increased risk of depression.
+2. **Family History and Depression**  
+   - **H₀:** Family history of mental illness is independent of depression status.  
+   - **Hₐ:** Students with a family history are more likely to be depressed.  
+   *(Tested via chi-square test)*
 
-3. **Social Interaction and Well-Being**  
-   - **H₀:** Social engagement does not significantly affect mental health.  
-   - **Hₐ:** Individuals with stronger social networks experience lower rates of depression.
+3. **CGPA and Depression**  
+   - **H₀:** CGPA is not significantly associated with depression.  
+   - **Hₐ:** Academic performance differs between depressed and non-depressed students.  
+   *(Tested via t-test and Pearson correlation)*
+
+4. **Scholarship Status and Depression**  
+   - **H₀:** Scholarship status does not influence depression scores.  
+   - **Hₐ:** Scholarship recipients exhibit different depression scores than non-recipients.  
+   *(Tested via two-sample t-test)*
 
 ---
 
@@ -86,44 +89,34 @@ This project relies on survey data capturing a range of demographic, economic, a
 This project utilizes the following tools for analysis and visualization:
 
 - **Python**: For data processing and statistical analysis
-- **Pandas**: For data structuring and manipulation
-- **Matplotlib & Seaborn**: For creating visual representations (scatter plots, correlation heatmaps, trend analysis)
-- **SciPy**: For hypothesis testing and statistical inference
+- **Pandas**: For dataset manipulation and cleaning
+- **Matplotlib & Seaborn**: For creating visualizations (histograms, scatterplots, violin plots, etc.)
+- **SciPy & Statsmodels**: For performing hypothesis tests and statistical inference
 
 ---
 
 ## Analysis Plan
 
 1. **Data Processing and Preparation**  
-   - Load and clean datasets, handle missing values, and ensure consistency in variable definitions.
+   - Clean and normalize datasets
+   - Convert categorical values and handle missing entries
 
-2. **Exploratory Data Analysis**  
-   - Use visualizations to explore patterns and relationships between socio-economic factors and depression rates.  
-   - Examples include:
-     - Correlation heatmap between economic factors and depression scores
-     - Distribution of depression rates across different education levels
-     - Income-based depression risk segmentation
+2. **Exploratory Data Analysis (EDA)**  
+   - Use visualizations (violin plots, KDEs, heatmaps) to examine how depression varies by sleep, CGPA, and scholarship status
 
 3. **Hypothesis Testing**  
-   - Perform statistical tests to evaluate the strength of relationships between key variables.
-   - Assess whether economic and social conditions are reliable predictors of depression outcomes.
+   - Use t-tests, ANOVA, chi-square, and correlation to test for statistical significance of observed patterns
 
 4. **Findings and Insights**  
-   - Summarize the key contributors to depression and discuss the potential implications.
+   - Summarize which variables—sleep, CGPA, financial aid, family history—most strongly relate to student depression
 
 ---
 
 ## Conclusion
 
-By the end of this project, I aim to answer:
-
-- Which socio-economic factors have the strongest influence on depression rates?
-- Do findings from different datasets support each other, reinforcing confidence in results?
-- How do income levels, education, and social networks interact with mental health outcomes?
-
-This study is not just about understanding depression—it’s about applying data science to uncover insights that can contribute to better-informed mental health discussions and interventions.
+This project uses hypothesis testing to uncover the most statistically supported predictors of depression among students. Sleep duration and family mental health history showed the strongest associations, while CGPA and scholarship status had weaker or non-significant effects. By combining multiple analytical methods and datasets, we gained a clearer view of student mental health and its contributing factors.
 
 ---
 
 ## AI Assistance Disclosure
-ChatGPT was used to improve language clarity.
+ChatGPT was used to revise earlier drafts and improve clarity in this updated README.
